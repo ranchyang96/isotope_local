@@ -1,0 +1,112 @@
+https://kubernetes.io/docs/setup/production-environment/container-runtimes/
+##################################################
+# Install Docker CE
+## Set up the repository:
+### Install packages to allow apt to use a repository over HTTPS
+apt-get update && apt-get install apt-transport-https ca-certificates curl software-properties-common
+
+### Add Docker’s official GPG key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+
+### Add Docker apt repository.
+add-apt-repository \
+		"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+		$(lsb_release -cs) \
+		stable"
+
+## Install Docker CE.
+		apt-get update && apt-get install docker-ce=18.06.2~ce~3-0~ubuntu
+
+# Setup daemon.
+		cat > /etc/docker/daemon.json <<EOF
+{
+	"exec-opts": ["native.cgroupdriver=systemd"],
+	"log-driver": "json-file",
+	"log-opts": {
+		"max-size": "100m"
+	},
+	"storage-driver": "overlay2"
+}
+EOF
+
+mkdir -p /etc/systemd/system/docker.service.d
+
+# Restart docker.
+systemctl daemon-reload
+systemctl restart docker
+####################################################
+
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+####################################################
+apt-get update && apt-get install -y apt-transport-https curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+apt-get update
+apt-get install -y kubelet kubeadm kubectl
+apt-mark hold kubelet kubeadm kubectl
+systemctl daemon-reload
+systemctl restart kubelet
+####################################################
+
+kubeadm config images pull
+optional, use to check connectivity
+
+Start cluster
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
+####################################################
+
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 
+Swap issue: cat /proc/swaps to see and swapoff -a to disable
+
+To start using your cluster, you need to run the following as a regular user:
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+- first change the owner of the file
+- move it without root, it gives the error but it's still copied
+- change the owner back
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+- seems not necessary since changed in the last step
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+kubeadm join 172.16.20.101:6443 --token i6jnlz.6s668wr7mtlkgd8z \
+    --discovery-token-ca-cert-hash sha256:9a6e71760df1b5100b9e79359f9cd6e0222ce4b8d712c998a2e9f40fd1714cc1
+####################################################
+
+pod network add-on, let's use calico
+https://docs.projectcalico.org/v3.9/getting-started/kubernetes/installation/calico
+####################################################
+curl https://docs.projectcalico.org/v3.9/manifests/calico.yaml -O
+POD_CIDR="<your-pod-cidr>" \
+sed -i -e "s?192.168.0.0/16?$POD_CIDR?g" calico.yaml
+kubectl apply -f calico.yaml
+####################################################
+
+kubectl get pods --all-namespaces
+# to check whether coredns is up and running
+
+kubectl taint nodes --all node-role.kubernetes.io/master-
+
+go through the rest of the page to join nodes
+####################################################
+
+deploy policy and pods
+https://docs.projectcalico.org/v3.9/security/tutorials/kubernetes-policy-basic
+####################################################
+
+
+
+
+****************************************************
+What's the go run in L102 in pipeline.py?
+What is service_image? Which image should we use?
+What's the output for the go run? What's the manifest_path?
+
+What's the relationship between deployo_prometheus and client_image?
+
+How does the load test run?
