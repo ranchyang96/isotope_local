@@ -1,0 +1,500 @@
+   11  sudo ls
+   12  uname -r
+   13  uname
+   14  uname -a
+   15  passwd
+   16  sudo ls
+   17  ls
+   18  pwd
+   19  cd .
+   20  cd ..
+   21  ls
+   22  cd yzhou104/
+   23  ls
+   24  cd ../yyang125/
+   25  passwd
+   26  sudo apt-get install vim-gtk
+   27  uname -r
+   28  df
+   29  free
+   30  cat /etc/os-release 
+   31  cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l
+   32  ping 172.16.20.101
+   33  ifconfig
+   34  sudo cat /sys/class/dmi/id/product_uuid
+   35  sudo cat /sys/class/dmi/id/product_uuid
+   36  ifconfig
+   37  ping 172.16.20.102
+   38  ip link
+   39  ifconfig -a
+   40  ifconfig -a eno1
+   41  sudo cat /sys/class/dmi/id/product_uuid 
+   42  pwd
+   43  apt-get update
+   44  sudo ls
+   45  sudo ls
+   46  sudo ls
+   47  sudo ls
+   48  visudo
+   49  sudo visudo
+   50  ls
+   51  cd hahaha
+   52  ls
+   53  ls
+   54  vim skel/
+   55  vim hello
+   56  ls
+   57  ls
+   58  vim hello 
+   59  ls
+   60  ls
+   61  sudo ls
+   62  vim hello
+   63  vim /etc/apt/sources.list.d/
+   64  sudo apt-get update
+   65  cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+   66  deb https://apt.kubernetes.io/ kubernetes-xenial main
+   67  EOF
+   68  sudo cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+   69  deb https://apt.kubernetes.io/ kubernetes-xenial main
+   70  EOF
+   71  sudo echo "deb https://apt.kuberenetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+   72  sudo sh -c 'echo "deb https://apt.kuberenetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list'
+   73  vim /etc/apt/sources.list.d/kubernetes.list 
+   74  vim /etc/apt/sources.list.d/kubernetes.list 
+   75  sudo su
+   76  vim /etc/default/kubelet
+   77  sudo apt-get install kubelet
+   78  vim /var/lib/kubelet/
+   79  cd /var/lib/kubelet/pki/
+   80  ls
+   81  cd
+   82  vim /etc/systemd/system/kubelet.service.d/10-kubeadm.conf 
+   83  systemctl show --property=Environment kubelet | cat
+   84  sudo systemctl show --property=Environment kubelet | cat
+   85  vim /var/lib/kubelet/config.yaml
+   86  kubectl cluster-info
+   87  kubectl cluster-info dump
+   88  sudo su
+   89  ps aux | grep apt-get
+   90  ps aux | grep apt-get
+   91  lscpu
+   92  sudo su
+   93  ps aux | grep apt-get
+   94  sudo su
+   95  ps aux | grep apt-get
+   96  cat > /etc/docker/daemon.json <<EOF
+   97  {
+   98    "exec-opts": ["native.cgroupdriver=systemd"],
+   99    "log-driver": "json-file",
+  100    "log-opts": {
+  101      "max-size": "100m"
+  102    },
+  103    "storage-driver": "overlay2"
+  104  }
+  105  EOF
+  106  vim /etc/docker/daemon.json
+  107  sudo vim /etc/docker/daemon.json
+  108  sudo su
+  109  sudo su
+  110  sudo apt-get upgrade
+  111  sudo apt-get upgrade
+  112  sudo apt-get update
+  113  sudo apt-get upgrade
+  114  ps aux | grep kubelet
+  115  ps aux | grep kube
+  116  ls
+  117  exit
+  118  ls
+  119  touch Random.txt
+  120  ls
+  121  rm Random.txt 
+  122  ls
+  123  sudo su
+  124  ls
+  125  cd ..
+  126  ls
+  127  cd ..
+  128  ls
+  129  touch Random.txt
+  130  sudo su
+  131  ls
+  132  mv Random.txt home/
+  133  sudo su
+  134  mv Random.txt home/
+  135  ls
+  136  cd home/
+  137  ls
+  138  cd ..
+  139  mv Random.txt home/yyang125/
+  140  sudo mv Random.txt home/yyang125/
+  141  ls
+  142  rm Random.txt 
+  143  sudo su
+  144  ls -l home/
+  145  ls
+  146  ls -l .
+  147  clear
+  148  touch Random.txt
+  149  sudo touch Random.txt
+  150  ls -l Random.txt 
+  151  ls -l home/yyang125/
+  152  ls
+  153  ls
+  154  sudo chown yyang125:yyang125 Random.txt 
+  155  sudo ls Random.txt 
+  156  sudo ls -l Random.txt 
+  157  ls
+  158  ls
+  159  mv Random.txt home/yyang125/
+  160  sudo mv Random.txt home/yyang125/
+  161  ls
+  162  cd home/yyang125/
+  163  ls
+  164  rm Random.txt 
+  165  ls
+  166  cd ../..
+  167  ls
+  168  mv Random.txt home/yyang125/
+  169  sudo mv Random.txt home/yyang125/
+  170  ls
+  171  cd home/yyang125/
+  172  ls
+  173  rm Random.txt 
+  174  ls
+  175  cd ../..
+  176  ls
+  177  nano Random.txt 
+  178  ls
+  179  mv Random.txt home/yyang125/
+  180  ls
+  181  cd home/yyang125/
+  182  ls
+  183  cat Random.txt 
+  184  ls
+  185  rm Random.txt 
+  186  ls
+  187  cd ../..
+  188  ls
+  189  rm Random.txt 
+  190  sudo rm Random.txt 
+  191  ls
+  192  kubeadm config images pull
+  193  kubeadm config images pull
+  194  kubeadm config images pull
+  195  lscpu
+  196  curl https://docs.projectcalico.org/v3.9/manifests/calico.yaml -O
+  197  ls
+  198  vim calico.yaml 
+  199  rm hello 
+  200  kubectl apply -f calico.yaml
+  201  ping 127.0.0.1
+  202  ls
+  203  vim calico.yaml 
+  204  POD_CIDR="192.168.0.0/16" sed -i -e "s?192.168.0.0/16?POD_CIDR?g" calico.yaml
+  205  vim calico.yaml 
+  206  kubectl apply -f calico.yaml
+  207  curl https://docs.projectcalico.org/v3.9/manifests/calico.yaml -O
+  208  POD_CIDR="192.168.0.0/16" sed -i -e "s?192.168.0.0/16?POD_CIDR?g" calico.yaml
+  209  kubectl apply -f calico.yaml
+  210  kubeadm init --pod-network-cidr=192.168.0.0/16
+  211  sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+  212  sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --ignore-preflight-errors=Swap
+  213  cat /var/lib/kubelet/kubeadm-flags.env
+  214  docker info
+  215  sudo docker info
+  216  kubectl apply -f calico.yaml
+  217  vim calico.yaml 
+  218  vim calico.yaml 
+  219  vim calico.yaml 
+  220  curl http://localhost:8080/version
+  221  sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --ignore-preflight-errors=Swap
+  222  kubeadm reset
+  223  sudo kubeadm reset
+  224  kubeadm --version
+  225  kubeadm version
+  226  kubelet version
+  227  kubelet 
+  228  kubeadm upgrade
+  229  kubeadm upgrade apply
+  230  kubeadm upgrade plan
+  231  sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --ignore-preflight-errors=Swap
+  232  systemctl status kubelet
+  233  sudo systemctl status kubelet
+  234  journalctl -xeu kubelet
+  235  docker ps -a | grep kube | grep -v paus
+  236  sudo docker ps -a | grep kube | grep -v pause
+  237  sudo docker ps -a 
+  238  sudo kubeadm reset
+  239  sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+  240  cat /proc/swaps
+  241  swapoff -a
+  242  sudo swapoff -a
+  243  cat /proc/swaps
+  244  sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+  245  mkdir -p $HOME/.kube
+  246  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  247  sudo sh -c "cp -i /etc/kubernetes/admin.conf $HOME/.kube/config"
+  248  sudo su
+  249  whoami
+  250  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  251  sudo su
+  252  ls
+  253  cp calico.yaml .kube/
+  254  cd .kube/
+  255  ls
+  256  rm calico.yaml 
+  257  ls
+  258  cd ..
+  259  ls
+  260  cp /etc/kubernetes/admin.conf .
+  261  sudo cp /etc/kubernetes/admin.conf .
+  262  sudo su
+  263  lsattr /etc/kubernetes/admin.conf 
+  264  sudo vim /etc/kubernetes/admin.conf 
+  265  sudo cp /etc/kubernetes/admin.conf .
+  266  ls -l /etc/kubernetes/admin.conf 
+  267  sudo cp -f /etc/kubernetes/admin.conf .
+  268  vim /etc/kubernetes/admin.conf 
+  269  sudo vim /etc/kubernetes/admin.conf 
+  270  sudo su
+  271  touch .kube/config
+  272  sudo cp -f /etc/kubernetes/admin.conf .kube/
+  273  rm .kube/config 
+  274  ls
+  275  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  276  sudo cp -iv /etc/kubernetes/admin.conf $HOME/.kube/config
+  277  sudo su
+  278  sudo cp -iv /etc/kubernetes/admin.conf $HOME/.kube/config
+  279  sudo cp /etc/kubernetes/admin.conf ./
+  280  ls -l /etc/kubernetes/admin.conf 
+  281  man mkdir
+  282  cd .kube/
+  283  ls
+  284  cd ..
+  285  cd .kube/
+  286  ls -a
+  287  cd ..
+  288  rm -rf .kube
+  289  mkdir .kube
+  290  ls
+  291  sudo cp -i /etc/kubernetes/admin.conf .kube/config
+  292  dmesg
+  293  ls -l /etc/kubernetes/admin.conf 
+  294  ls -l .kube/
+  295  sudo su
+  296  cat $HOME
+  297  ls -ld .kube/
+  298  chmod 777 /etc/kubernetes/admin.conf 
+  299  sudo chmod 777 /etc/kubernetes/admin.conf 
+  300  sudo cp -i /etc/kubernetes/admin.conf .kube/config
+  301  sudo chmod 600 /etc/kubernetes/admin.conf 
+  302  ls -l /etc/kubernetes/admin.conf 
+  303  sudo su
+  304  mkdir -p $HOME/.kube
+  305  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  306  sudo apt-get update
+  307  ls -ld /etc/kubernetes/
+  308  ls -l /etc/kubernetes/admin.conf 
+  309  ls -ld .kube/
+  310  cp -i /etc/kubernetes/admin.conf .kube/config
+  311  sudo chown $(id -u):$(id -g) $HOME/.kube
+  312  id -u
+  313  id -g
+  314  sudo chattr -i .kube/
+  315  sudo cp -i /etc/kubernetes/admin.conf .kube/config
+  316  ls
+  317  cd .kube/
+  318  ls
+  319  cd ..
+  320  ls -ld .kube/
+  321  sudo chmod 777 .kube/
+  322  ls -ld .kube/
+  323  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  324  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  325  cd /home/yyang125/.kube/
+  326  ls
+  327  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/
+  328  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/
+  329  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  330  cat /etc/kubernetes/admin.conf 
+  331  sudo su
+  332  ssh compute05
+  333  cd
+  334  kls
+  335  ls
+  336  sudo chown yyang125:yyang125 /etc/kubernetes/admin.conf 
+  337  mv /etc/kubernetes/admin.conf .kube/config
+  338  vim .kube/config 
+  339  sudo chown root:root /etc/kubernetes/admin.conf 
+  340  ls -l /etc/kubernetes/admin.conf 
+  341  ls -l /etc/kubernetes/kubelet.conf 
+  342  ls
+  343  cp calico.yaml /
+  344  sudo cp calico.yaml /
+  345  sudo rm /calico.yaml 
+  346  id -u
+  347  id -g
+  348  id -u yyang125
+  349  id -g yyang125
+  350  id
+  351  ls -l .kube/config 
+  352  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  353  curl https://docs.projectcalico.org/v3.9/manifests/calico.yaml -O
+  354  POD_CIDR="<your-pod-cidr>" sed -i -e "s?192.168.0.0/16?$POD_CIDR?g" calico.yaml
+  355  kubectl apply -f calico.yaml
+  356  kubectl get pods --all-namespaces
+  357  kubectl taint nodes --all node-role.kubernetes.io/master-
+  358  sudo kubeadm token list
+  359  kubeadm toker list
+  360  kubeadm token list
+  361  ifconfig
+  362  kubectl get nodes
+  363  kubectl get nodes
+  364  kubectl get nodes
+  365  kubectl get nodes
+  366  kubectl get nodes
+  367  kubectl get nodes
+  368  kubectl get nodes
+  369  kubectl get nodes
+  370  kubectl get nodes
+  371  kubectl get nodes
+  372  kubectl get nodes
+  373  kubectl get nodes
+  374  kubectl get nodes
+  375  kubectl get nodes
+  376  kubectl get nodes
+  377  kubectl get pods
+  378  kubectl create ns policy-demo
+  379  kubectl run --namespace=policy-demo nginx --replicas=2 --image=nginx
+  380  kubectl expose --namespace=policy-demo deployment nginx --port=80
+  381  kubectl run --namespace=policy-demo access --rm -ti --image busybox /bin/sh
+  382  kubectl run --namespace=policy-demo access --rm -ti --image busybox /bin/sh
+  383  kubectl get pods
+  384  kubectl get --help
+  385  kubectl create -f - <<EOF
+  386  kind: NetworkPolicy
+  387  apiVersion: networking.k8s.io/v1
+  388  metadata:
+  389    name: default-deny
+  390    namespace: policy-demo
+  391  spec:
+  392    podSelector:
+  393      matchLabels: {}
+  394  EOF
+  395  kubectl run --namespace=policy-demo access --rm -ti --image busybox /bin/sh
+  396  kubectl get apiservices
+  397  kubectl create -f deploy/1.8+/
+  398  https://github.com/kubernetes-incubator/metrics-server.git
+  399  git clone https://github.com/kubernetes-incubator/metrics-server.git
+  400  ls
+  401  cd metrics-server/
+  402  kubectl create -f deploy/1.8+/
+  403  kubectl get apiservices
+  404  cd ..
+  405  kubectl get nodes
+  406  kubectl get namespaces
+  407  kubectl get pods --help
+  408  kubectl get pods --all-namespaces
+  409  kubectl get namespaces
+  410  kubectl get deploy
+  411  kubeadm version
+  412  sudo swapoff -a
+  413  sudo kubeadm join 172.16.20.101:6443 --token i6jnlz.6s668wr7mtlkgd8z --discovery-token-ca-cert-hash sha256:9a6e71760df1b5100b9e79359f9cd6e0222ce4b8d712c998a2e9f40fd1714cc1
+  414  kubectl get pods
+  415  kubectl create --help
+  416  kubectl get pods
+  417  kubectl get nodes
+  418  ls
+  419  wget https://github.com/istio/istio/releases/download/1.3.1/istio-1.3.1-linux.tar.gz
+  420  ls
+  421  tar -xvf istio-1.3.1-linux.tar.gz 
+  422  helm
+  423  sudo snap install helm --classic
+  424  ls
+  425  cd istio-1.3.1/
+  426  helm repo add istio.io https://storage.googleapis.com/istio-release/releases/1.3.1/charts/
+  427  helm init
+  428  helm repo add istio.io https://storage.googleapis.com/istio-release/releases/1.3.1/charts/
+  429  kubectl create namespace istio-system
+  430  helm template install/kubernetes/helm/istio-init --name istio-init --namespace istio-system | kubectl apply -f -
+  431  kubectl get crds | grep 'istio.io' | wc -l
+  432  kubectl get crds | grep 'istio.io' | wc -l
+  433  helm template install/kubernetes/helm/istio-init --name istio-init --namespace istio-system | kubectl apply -f -
+  434  kubectl get crds | grep 'istio.io' | wc -l
+  435  kubectl get crds
+  436  kubectl get crds
+  437  kubectl get crds
+  438  kubectl get crds | grep 'istio.io' | wc -l
+  439  kubectl get crds | grep 'istio.io' | wc -l
+  440  helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl apply -f -
+  441  kubectl get pods -n istio-system
+  442  kubectl get pods -n istio-system
+  443  kubectl get pods -n istio-system
+  444  kubectl get pods -n istio-system
+  445  kubectl get pods -n istio-system
+  446  kubectl get pods -n istio-system
+  447  kubectl get pods -n istio-system
+  448  kubectl get pods -n istio-system
+  449  kubectl get pods -n istio-system
+  450  kubectl get pods -n istio-system
+  451  kubectl get pods -n istio-system
+  452  kubectl get pods -n istio-system
+  453  kubectl get pods -n istio-system
+  454  kubectl get pods -n istio-system
+  455  kubectl get pods -n istio-system
+  456  kubectl get pods -n istio-system
+  457  kubectl get pods -n istio-system
+  458  kubectl get pods -n istio-system
+  459  kubectl get pods -n istio-system
+  460  kubectl get pods -n istio-system
+  461  kubectl get pods -n istio-system
+  462  kubectl get pods -n istio-system
+  463  kubectl get pods -n istio-system
+  464  kubectl get pods -n istio-system
+  465  kubectl get pods -n istio-system
+  466  kubectl get pods -n istio-system
+  467  kubectl get pods -n istio-system
+  468  kubectl get svc -n istio-system
+  469  kubectl get pods -n istio-system
+  470  kubectl get pods -n istio-system
+  471  kubectl get pods -n istio-system
+  472  kubectl label namespace default istio-injection=enabled
+  473  kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+  474   kubectl get pods
+  475   kubectl get pods
+  476   kubectl get pods
+  477   kubectl get pods
+  478   kubectl get pods
+  479   kubectl get pods
+  480   kubectl get pods
+  481   kubectl get pods
+  482   kubectl get pods
+  483   kubectl get pods
+  484   kubectl get pods
+  485  kubectl get nodes
+  486  kubectl describe nodes compute06
+  487   kubectl get pods
+  488  kubectl exec -it $(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}') -c ratings -- curl productpage:9080/productpage | grep -o "<title>.*</title>"
+  489  kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+  490  kubectl get svc istio-ingressgateway -n istio-system
+  491  kubectl get svc istio-ingressgateway -n istio-system
+  492  kubectl get svc istio-ingressgateway -n istio-system
+  493  kubectl get svc istio-ingressgateway -n istio-system
+  494  kubectl get svc istio-ingressgateway -n istio-system
+  495  export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
+  496  echo $INGRESS_PORT
+  497  export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
+  498  echo $INGRESS_PORT
+  499  kubectl get gateway
+  500  export INGRESS_HOST=$(kubectl get po -l istio=ingressgateway -n istio-system -o jsonpath='{.items[0].status.hostIP}')
+  501  echo $INGRESS_HOST
+  502  export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
+  503  echo $GATEWAY_URL
+  504   curl -s http://${GATEWAY_URL}/productpage | grep -o "<title>.*</title>"
+  505   curl -s http://${GATEWAY_URL}/productpage
+  506  kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
+  507   curl -s http://${GATEWAY_URL}/productpage
+  508   curl -s http://${GATEWAY_URL}/productpage > ../gatewayproduct.html
+  509  vim ../gatewayproduct.html 
+  510  history > ../history.txt

@@ -17,7 +17,7 @@
 import argparse
 import logging
 
-from runner import cluster, config as cfg, consts, entrypoint, mesh, pipeline
+from runner import cluster, config as cfg, consts, entrypoint, mesh, pipeline, rcmd
 
 
 def main(args: argparse.Namespace) -> None:

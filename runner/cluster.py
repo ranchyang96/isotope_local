@@ -17,7 +17,7 @@
 import logging
 import os
 
-from . import consts, prometheus, resources, sh, wait
+from . import consts, prometheus, resources, sh, wait, remotecmd
 from typing import List
 
 
@@ -26,6 +26,7 @@ def set_up_if_not_exists(
         service_graph_machine_type: str, service_graph_disk_size_gb: int,
         service_graph_num_nodes: int, client_machine_type: str,
         client_disk_size_gb: int) -> None:
+	'''
     sh.run_gcloud(['config', 'set', 'project', project_id], check=True)
     zone = zones[0]
 
@@ -35,6 +36,14 @@ def set_up_if_not_exists(
         ['container', 'clusters', 'list', '--zone', zone], check=True).stdout
     # TODO: Also check if the cluster is normal (e.g. not being deleted).
     if name in output:
+        logging.debug('%s already exists; bypassing creation', name)
+    else:
+        logging.debug('%s does not exist yet; creating...', name)
+        set_up(project_id, name, zones, version, service_graph_machine_type,
+               service_graph_disk_size_gb, service_graph_num_nodes,
+               client_machine_type, client_disk_size_gb)
+			   '''
+    if exist:
         logging.debug('%s already exists; bypassing creation', name)
     else:
         logging.debug('%s does not exist yet; creating...', name)
@@ -60,7 +69,7 @@ def set_up(project_id: str, name: str, zones: List[str], version: str,
         client_machine_type: GCE type of client machine
         client_disk_size_gb: disk size of client machine in gigabytes
     """
-    sh.run_gcloud(['config', 'set', 'project', project_id], check=True)
+	#sh.run_gcloud(['config', 'set', 'project', project_id], check=True)
 
     _create_cluster(name, zones, version, 'n1-standard-4', 16, 1)
     _create_cluster_role_binding()
@@ -72,11 +81,13 @@ def set_up(project_id: str, name: str, zones: List[str], version: str,
         prometheus.apply(
             intermediate_file_path=resources.PROMETHEUS_VALUES_GEN_YAML_PATH)
 
+	'''
     _create_service_graph_node_pool(service_graph_num_nodes,
                                     service_graph_machine_type,
                                     service_graph_disk_size_gb,
                                     zones[0])
     _create_client_node_pool(client_machine_type, client_disk_size_gb, zones[0])
+	'''
 
 
 def _create_cluster(name: str, zones: List[str], version: str, machine_type: str,
@@ -85,6 +96,7 @@ def _create_cluster(name: str, zones: List[str], version: str, machine_type: str
     node_locations = ','.join(zones)
     zone = zones[0]
 
+	'''
     sh.run_gcloud(
         [
             'container', 'clusters', 'create', name, '--zone', zone,
@@ -98,6 +110,7 @@ def _create_cluster(name: str, zones: List[str], version: str, machine_type: str
     sh.run_gcloud(
         ['container', 'clusters', 'get-credentials', '--zone', zone, name],
         check=True)
+		'''
 
 
 def _create_service_graph_node_pool(num_nodes: int, machine_type: str,

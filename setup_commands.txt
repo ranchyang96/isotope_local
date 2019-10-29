@@ -3,7 +3,7 @@ https://kubernetes.io/docs/setup/production-environment/container-runtimes/
 # Install Docker CE
 ## Set up the repository:
 ### Install packages to allow apt to use a repository over HTTPS
-apt-get update && apt-get install apt-transport-https ca-certificates curl software-properties-common
+apt-get update && apt-get install -y apt-transport-https ca-certificates curl software-properties-common
 
 ### Add Docker’s official GPG key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
@@ -15,7 +15,7 @@ add-apt-repository \
 		stable"
 
 ## Install Docker CE.
-		apt-get update && apt-get install docker-ce=18.06.2~ce~3-0~ubuntu
+		apt-get update && apt-get install -y docker-ce=18.06.2~ce~3-0~ubuntu
 
 # Setup daemon.
 		cat > /etc/docker/daemon.json <<EOF
@@ -78,6 +78,9 @@ kubeadm join 172.16.20.101:6443 --token i6jnlz.6s668wr7mtlkgd8z \
     --discovery-token-ca-cert-hash sha256:9a6e71760df1b5100b9e79359f9cd6e0222ce4b8d712c998a2e9f40fd1714cc1
 ####################################################
 
+token management
+https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-token/
+
 pod network add-on, let's use calico
 https://docs.projectcalico.org/v3.9/getting-started/kubernetes/installation/calico
 ####################################################
@@ -99,14 +102,13 @@ deploy policy and pods
 https://docs.projectcalico.org/v3.9/security/tutorials/kubernetes-policy-basic
 ####################################################
 
+install helm via helm template, option 1
+https://istio.io/docs/setup/install/helm/
 
+kubectl delete deployment
 
+BCC installment:
+make in kernel
 
-****************************************************
-What's the go run in L102 in pipeline.py?
-What is service_image? Which image should we use?
-What's the output for the go run? What's the manifest_path?
-
-What's the relationship between deployo_prometheus and client_image?
-
-How does the load test run?
+get name and IP in a namespace:
+kubectl describe pods -n *** | grep -E '(^IP:|^Name:)'

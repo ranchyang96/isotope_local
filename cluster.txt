@@ -1,0 +1,65 @@
+machines:
+gateway			172.16.20.1
+compute04		172.16.20.101
+compute05		172.16.20.102
+compute06		172.16.20.103
+pods:
+details-v1		192.168.90.194/05
+productpage-v1	192.168.90.195/05
+ratings-v1		192.168.90.199/05
+reviews-v1		192.168.90.198/05
+reviews-v2		192.168.90.197/05
+reviews-v3		192.168.90.196/05
+istio-system:
+Name:           istio-citadel-7f658f677d-cbdwl
+IP:             192.168.97.71/06
+Name:           istio-galley-8f5fcd88b-qh62s
+IP:             192.168.97.72/06
+Name:           istio-ingressgateway-58594f898f-wtkwm
+IP:             192.168.97.79/06
+Name:           istio-init-crd-10-1.3.1-22b5v
+IP:             192.168.97.68
+Name:           istio-init-crd-11-1.3.1-nt58z
+IP:             192.168.97.69
+Name:           istio-pilot-6f649668fd-7dr67
+IP:             192.168.252.4/04
+Name:           istio-policy-c9bb69cd6-kqs8n
+IP:             192.168.97.70/06
+Name:           istio-sidecar-injector-857959c99-qcl8g
+IP:             192.168.97.74/06
+Name:           istio-telemetry-7789449797-72xrc
+IP:             192.168.97.80/06
+Name:           prometheus-7d7b9f7844-sxcfb
+IP:             192.168.97.73/06
+kube-system:
+Name:           calico-kube-controllers-f78989564-2kpsv
+IP:             192.168.252.2/04
+Name:           calico-node-c5dkv
+IP:             172.16.20.103/06
+Name:           calico-node-f8gcc
+IP:             172.16.20.101/04
+Name:           calico-node-tm4ch
+IP:             172.16.20.102/05
+Name:           coredns-5c98db65d4-hvm7c
+IP:             192.168.252.3/04
+Name:           coredns-5c98db65d4-stlvq
+IP:             192.168.252.1/04
+Name:           etcd-compute04
+IP:             172.16.20.101/04
+Name:           kube-apiserver-compute04
+IP:             172.16.20.101/04
+Name:           kube-controller-manager-compute04
+IP:             172.16.20.101/04
+Name:           kube-proxy-bvm2d
+IP:             172.16.20.101/04
+Name:           kube-proxy-fmj5p
+IP:             172.16.20.102/05
+Name:           kube-proxy-mjc89
+IP:             172.16.20.103/06
+Name:           kube-scheduler-compute04
+IP:             172.16.20.101/04
+Name:           metrics-server-79679855f7-dgn82
+IP:             192.168.97.67/06
+Name:           tiller-deploy-75f6c87b87-kmlvb
+IP:             192.168.97.78/06
+
