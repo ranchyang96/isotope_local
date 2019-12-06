@@ -62,4 +62,20 @@ Name:           metrics-server-79679855f7-dgn82
 IP:             192.168.97.67/06
 Name:           tiller-deploy-75f6c87b87-kmlvb
 IP:             192.168.97.78/06
-
+services:
+default			details					10.101.38.27
+default			kubernetes				10.96.0.1
+default			productpage				10.98.171.113
+default			ratings					10.98.184.108
+default			reviews					10.106.53.78
+istio-system	istio-citadel			10.100.188.181
+istio-system	istio-galley			10.108.135.218
+istio-system	istio-ingressgateway	10.99.86.13
+istio-system	istio-pilot				10.109.96.202
+istio-system	istio-policy			10.100.25.197
+istio-system	istio-sidecar-injector	10.102.67.253
+istio-system	istio-telemetry			10.108.189.250
+istio-system	prometheus				10.106.58.239
+kube-system		kube-dns				10.96.0.10
+kube-system		metrics-server			10.100.82.70
+kube-system		tiller-deploy			10.106.95.247

@@ -112,3 +112,7 @@ make in kernel
 
 get name and IP in a namespace:
 kubectl describe pods -n *** | grep -E '(^IP:|^Name:)'
+
+####################################################
+verify it's running fine:
+curl -s http://172.16.20.102:31380/productpage | grep -o "<title>.*</title>"
