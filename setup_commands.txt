@@ -116,3 +116,10 @@ kubectl describe pods -n *** | grep -E '(^IP:|^Name:)'
 ####################################################
 verify it's running fine:
 curl -s http://172.16.20.102:31380/productpage | grep -o "<title>.*</title>"
+curl -s http://10.99.86.13:80/productpage | grep -o "<title>.*</title>"
+
+####################################################
+jaeger
+https://istio.io/docs/tasks/observability/distributed-tracing/jaeger/
+https://github.com/jaegertracing/jaeger-operator
+https://www.jaegertracing.io/docs/1.16/operator/
