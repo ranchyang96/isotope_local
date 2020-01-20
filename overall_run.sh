@@ -3,7 +3,7 @@ qpses=( 2 8 32 128 )
 testtype="_in"
 for testtype in _in _ack _app
 do
-	for machine in 05
+	for machine in 04 05 06
 	do
 		for qps in "${qpses[@]}"
 		do
@@ -36,7 +36,7 @@ do
 		done
 	done
 done
-for machine in 05
+for machine in 04 05 06
 do
 	for qps in "${qpses[@]}"
 	do

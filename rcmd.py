@@ -151,11 +151,13 @@ if __name__=='__main__':
 
 	qps = sys.argv[1]
 
-	clear = ['sudo pkill -f tcpack',
-			'sudo pkill -f tcpin',
+	clear = ['sudo pkill -f tcpack.py',
+			'sudo pkill -f tcpin.py',
+			'sudo pkill -f app.py',
 			'sudo pkill -f fortio',
 			'sudo rm /usr/local/bcc/tcpack',
 			'sudo rm /usr/local/bcc/tcpin',
+			'sudo rm /usr/local/bcc/app',
 			]
 	ssh_config_run("compute04",clear)
 	ssh_config_run("compute05",clear)
@@ -164,7 +166,8 @@ if __name__=='__main__':
 	print("clear")
 	tcpack = ['sudo timeout 60s python2.7 /home/yyang125/uBPF_tests/tcpack.py -o']
 	tcpin = ['sudo timeout 60s python2.7 /home/yyang125/uBPF_tests/tcpin.py -o']
-	fortio = ['/home/yyang125/go/bin/fortio load -qps ' + qps + ' -t 40s http://172.16.20.102:31380/productpage']
+	app = ['sudo timeout 60s python2.7 /home/yyang125/uBPF_tests/app.py -o']
+	fortio = ['/home/yyang125/go/bin/fortio load -qps ' + qps + ' -t 40s http://10.100.111.235:80/productpage']
 
 	a = [i for i in range(10)]
 	c = [i for i in range(10)]
@@ -173,10 +176,12 @@ if __name__=='__main__':
 		host = "compute0" + str(i)
 		a[i]=threading.Thread(target=ssh_config_run,args=(host,tcpack))
 		c[i]=threading.Thread(target=ssh_config_run,args=(host,tcpin))
+		d[i]=threading.Thread(target=ssh_config_run,args=(host,app))
 
 	for i in range(4,7):
 		a[i].start()
 		c[i].start()
+		d[i].start()
 
 	print("uBPF starts")
 
@@ -188,12 +193,16 @@ if __name__=='__main__':
 	for i in range(4,7):
 		a[i].join()
 		c[i].join()
+		d[i].join()
 	
 	print("experiment finished")
 	autorun("scp compute04:/usr/local/bcc/tcpack texts/org_ack04qps"+qps+".txt")
 	autorun("scp compute04:/usr/local/bcc/tcpin texts/org_in04qps"+qps+".txt")
+	autorun("scp compute04:/usr/local/bcc/app texts/org_app04qps"+qps+".txt")
 	autorun("scp compute05:/usr/local/bcc/tcpack texts/org_ack05qps"+qps+".txt")
 	autorun("scp compute05:/usr/local/bcc/tcpin texts/org_in05qps"+qps+".txt")
+	autorun("scp compute05:/usr/local/bcc/app texts/org_app05qps"+qps+".txt")
 	autorun("scp compute06:/usr/local/bcc/tcpack texts/org_ack06qps"+qps+".txt")
 	autorun("scp compute06:/usr/local/bcc/tcpin texts/org_in06qps"+qps+".txt")
+	autorun("scp compute05:/usr/local/bcc/app texts/org_app06qps"+qps+".txt")
 	print("files fetched")

@@ -123,3 +123,11 @@ jaeger
 https://istio.io/docs/tasks/observability/distributed-tracing/jaeger/
 https://github.com/jaegertracing/jaeger-operator
 https://www.jaegertracing.io/docs/1.16/operator/
+https://istio.io/docs/setup/install/istioctl/#customizing-the-configuration
+
+
+istioctl manifest apply --set values.tracing.enabled=true 
+istioctl manifest apply --set values.tracing.provider=jaeger
+istioctl manifest apply --set values.global.tracer.zipkin.address=jaeger-collector.observability.svc.cluster.local:9411
+istioctl manifest apply --set values.tracing.ingress.enabled=true
+
