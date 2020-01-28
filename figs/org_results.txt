@@ -1,0 +1,55 @@
+qps 2:
+compute05:
+29,957,495,161      cycles:u
+34,968,324,134      cycles:k
+31,814,420,904      instructions:u            #    1.06  insn per cycle
+17,368,920,360      instructions:k            #    0.50  insn per cycle
+44.893768414 seconds time elapsed
+compute06:
+13,651,601,762      cycles:u
+12,408,638,225      cycles:k
+14,519,355,478      instructions:u            #    1.06  insn per cycle
+5,019,869,187      instructions:k            #    0.40  insn per cycle
+45.299960264 seconds time elapsed
+
+qps 8:
+compute05:
+39,465,179,753      cycles:u
+39,560,949,038      cycles:k
+39,563,948,355      instructions:u            #    1.00  insn per cycle
+19,265,110,706      instructions:k            #    0.49  insn per cycle
+44.722771165 seconds time elapsed
+compute06:
+23,254,381,348      cycles:u
+16,169,258,734      cycles:k
+21,460,833,718      instructions:u            #    0.92  insn per cycle
+ 6,182,169,715      instructions:k            #    0.38  insn per cycle
+45.119427012 seconds time elapsed
+
+qps 32:
+compute05:
+74,285,174,428      cycles:u
+46,855,626,902      cycles:k
+68,878,071,660      instructions:u            #    0.93  insn per cycle
+21,458,607,714      instructions:k            #    0.46  insn per cycle
+42.354106997 seconds time elapsed
+compute06:
+60,682,069,808      cycles:u
+27,926,707,192      cycles:k
+50,202,174,039      instructions:u            #    0.83  insn per cycle
+ 9,319,620,140      instructions:k            #    0.33  insn per cycle
+44.735170151 seconds time elapsed
+
+qps 128:
+compute05:
+95,280,095,377      cycles:u
+53,035,856,514      cycles:k
+88,268,057,863      instructions:u            #    0.93  insn per cycle
+23,791,027,603      instructions:k            #    0.45  insn per cycle
+43.028213838 seconds time elapsed
+compute06:
+76,641,325,542      cycles:u
+34,778,426,149      cycles:k
+60,149,778,147      instructions:u            #    0.78  insn per cycle
+11,000,589,489      instructions:k            #    0.32  insn per cycle
+42.840855416 seconds time elapsed

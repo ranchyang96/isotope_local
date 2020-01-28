@@ -107,7 +107,14 @@ This node has joined the cluster:
 Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 
 **********************************************************
+inside cluster:
+kubectl get svc istio-ingressgateway -n istio-system
 curl -s http://10.100.111.235:80/productpage | grep -o "<title>.*</title>"
+
+outside cluster:
+export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
+export INGRESS_HOST=$(kubectl get po -l istio=ingressgateway -n istio-system -o jsonpath='{.items[0].status.hostIP}')
+curl -s http://172.16.20.102:31058/productpage
 
 Firefox browser redirect:
 ssh -vND 8888 cluster04
