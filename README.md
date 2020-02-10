@@ -1,3 +1,9 @@
+# Local Isotope benchmark test setup
+
+Contains steps to set up local environment.
+
+It includes issues encountered and data analysis of the tests.
+
 # Isotope
 
 Isotope (**is**ti**o** **to**pology **pe**rformance) benchmarks Istio against
