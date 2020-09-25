@@ -124,11 +124,11 @@ def ssh_config_run(host,cmd):
     ssh.close()
 
 if __name__=='__main__':
-    qps1 = '2'
+    qps1 = '20'
     qps2 = '128'
-    time1 = '60s'
+    time1 = '1200s'
     time2 = '60s'
-    time3 = '150s'
+    time3 = '1300s'
     serviceip = 'http://172.16.20.103:30260/productpage'
     cmd0 = [
             'sudo apt-get update',
@@ -170,11 +170,15 @@ if __name__=='__main__':
     print("clear")
     tcpack_mod = ['sudo timeout ' + time3 + ' python2.7 /home/yyang125/uBPF_tests/tcpack_mod.py -o']
     tcpin_mod = ['sudo timeout ' + time3 + ' python2.7 /home/yyang125/uBPF_tests/tcpin_mod.py -o']
-    fortio = ['/home/yyang125/go/bin/fortio load -qps ' + qps1 + ' -t ' + time1 + ' ' + serviceip + '&& /home/yyang125/go/bin/fortio load -qps ' + qps2 + ' -t ' + time2 + ' ' + serviceip]
+    fortio1 = ['/home/yyang125/go/bin/fortio load -qps ' + qps1 + ' -t ' + time1 + ' ' + serviceip]
+    fortio2 = ['/home/yyang125/go/bin/fortio load -qps ' + qps2 + ' -t ' + time2 + ' ' + serviceip]
 
     a = [i for i in range(10)]
     c = [i for i in range(10)]
-    b=threading.Thread(target=ssh_config_run,args=("compute07",fortio))
+    d = [i for i in range(10)]
+    b=threading.Thread(target=ssh_config_run,args=("compute07",fortio1))
+    for i in range(10):
+        d[i]=threading.Thread(target=ssh_config_run,args=("compute07",fortio2))
     for i in range(4,7):
         host = "compute0" + str(i)
         a[i]=threading.Thread(target=ssh_config_run,args=(host,tcpack_mod))
@@ -190,10 +194,17 @@ if __name__=='__main__':
 
     b.start()
 
+    for i in range(10):
+        time.sleep(58)
+        d[i].start()
+        d[i].join()
+
     b.join()
     for i in range(4,7):
         a[i].join()
+        print("a", i, "done")
         c[i].join()
+        print("c", i, "done")
     
     print("experiment finished")
     autorun("scp compute04:/usr/local/bcc/tcpack_mod texts/org_ack04qps.txt")
