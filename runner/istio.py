@@ -111,7 +111,26 @@ def _extract(archive_path: str, extracted_dir_path: str) -> str:
         the path to the single directory the archive contains
     """
     with tarfile.open(archive_path) as tar:
-        tar.extractall(path=extracted_dir_path)
+        def is_within_directory(directory, target):
+            
+            abs_directory = os.path.abspath(directory)
+            abs_target = os.path.abspath(target)
+        
+            prefix = os.path.commonprefix([abs_directory, abs_target])
+            
+            return prefix == abs_directory
+        
+        def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+        
+            for member in tar.getmembers():
+                member_path = os.path.join(path, member.name)
+                if not is_within_directory(path, member_path):
+                    raise Exception("Attempted Path Traversal in Tar File")
+        
+            tar.extractall(path, members, numeric_owner) 
+            
+        
+        safe_extract(tar, path=extracted_dir_path)
     extracted_items = os.listdir(extracted_dir_path)
     if len(extracted_items) != 1:
         raise ValueError(
